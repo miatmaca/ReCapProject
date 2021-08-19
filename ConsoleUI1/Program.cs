@@ -15,21 +15,65 @@ namespace ConsoleUI
             Car car = new Car();
             car.BrandId = 1;
             car.ColorId = 3;
-            car.Id = 4;
-            car.ModelYear = 1999;
-            car.Description = "Tofaş";
+            
+            car.ModelYear = 1978;
+            car.Description = "Şahin";
             car.DailyPrice = 100;
 
+           // carManager.Add(car);//Ekleme
 
-            ColorManager colorManager1 = new ColorManager(new EfColorDal());
-            var result = colorManager1.GetColorId(1);
+            //ColorManager colorManager1 = new ColorManager(new EfColorDal());
+            //var result = colorManager1.GetColorId(1);
 
-            if (result.Success)
+            //if (result.Success)
 
-            {
-                Console.WriteLine(result.Message);
-                Console.ReadLine();
-            }          
+            //{
+            //    Console.WriteLine(result.Message);
+            //   Console.ReadLine();
+            //}
+
+            User user = new User();
+            user.Id =2;
+            
+            user.LastName = "ATMACA";
+            user.Email = "mismetatmaca@gmail.com";
+            user.Password = "123456";
+
+            //User user1 = new User();
+            //user1.Id = 2;
+            //user1.FirstName = "Arda";
+            //user1.LastName = "ALİM";
+            //user1.Email = "aaatmacagmail.com";
+            //user1.Password = "987654"; 
+
+
+             UserManager userManager = new UserManager(new EfUserDal());
+             userManager.Add(user);
+            // userManager.Add(user1);
+
+
+            //Customer customer = new Customer();
+            //customer.UserId = 1;
+            //customer.CompanyName = "ATMACA";
+
+            //Customer customer1 = new Customer();
+            //customer1.UserId = 2;
+            //customer1.CompanyName = "İnthermo";
+
+            // CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            // customerManager.Add(customer);
+            //// customerManager.Add(customer1);
+
+            // Rental rental = new Rental();
+            // rental.CarId = 1;
+            // rental.CustomerId = 1;
+            // rental.Id = 1;
+            // rental.RentDate =new DateTime (1995, 11 , 11);
+
+            // RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            // rentalManager.Add(rental);
+
+
 
 
             //var result = carManager.GetCarDetails();
@@ -51,7 +95,7 @@ namespace ConsoleUI
             //}
 
 
-            //  carManager.Add(car);//Ekleme
+
             //   carManager.Delete(car);//Silme
             //    carManager.Update(car);//Güncelleme
 

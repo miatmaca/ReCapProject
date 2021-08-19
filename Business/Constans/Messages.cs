@@ -17,7 +17,10 @@ namespace Business.Constans
         public static string BrandUpdate= "Marka Başarıyla Güncellendi";
         public static string Listed = "Başarıyla Listelendi";
         public static string ErrorMessage = "Hata Mesajı";
-        
-
+        public static string Added = "Eklendi";
+        public static string Deleted = "Silindi";
+        public static string Update = "Güncellendi";
+        public static string Imagefull="Resim En Fazla 5 Adet Olabilir";
+        public static string ImageNotFound="Arabaya Ait Resim Bulunamadı";
     }
 }
