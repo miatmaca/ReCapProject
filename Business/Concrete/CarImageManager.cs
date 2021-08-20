@@ -8,6 +8,7 @@ using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -63,7 +64,15 @@ namespace Business.Concrete
         }
         public IDataResult<List<CarImage>> GetById(int Id)
         {
-            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == Id));
+            IResult result = BusinessRules.Run(CheckIfCarImageNull(Id));
+
+            if (result!=null)
+            {
+                return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == Id));
+            }
+
+            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(Id).Data);
+
         }
         public IDataResult<List<CarImage>> GetAll()
         {
@@ -75,7 +84,7 @@ namespace Business.Concrete
 
             if (carImage == null)
             {
-                return new ErrorResult(Messages.ImageNotFound);
+                return new ErrorResult(Messages.NotFound);
             }
 
             var updateFile = FileHelper.Update(file, carImage.ImagePath);
@@ -101,14 +110,24 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
-        //       private IResult CheckIfCarImageNull(int Id)
-        //       {
-        //           string path = @"\images\logo.jpg";
+        private IDataResult<List<CarImage>> CheckIfCarImageNull(int Id)
+        {
+            string path = @"\images\logo.jpg";
 
-        //           var result = _carImageDal.GetAll(c => c.CarId ==Id);
+            var result = _carImageDal.GetAll(c => c.CarId == Id).Any();
+            if (!result)
+            {
+                List<CarImage> carImage = new List<CarImage>();
+                carImage.Add(new CarImage { CarId = Id, Date = DateTime.Now, ImagePath = path });
+                return new SuccessDataResult<List<CarImage>>(carImage);
+            }
 
-        //           if ()
-        //}
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == Id).ToList());
+            
+             
+
+           
+        }
 
     }
 }

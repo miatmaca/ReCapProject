@@ -38,6 +38,7 @@ namespace Core.Utilities.Helper
             {
                 return new ErrorResult(fileExist.Message);
             }
+
             var type = Path.GetExtension(file.FileName);
             var typeValid = CheckFileTypeValid(type);
             var randomName = Guid.NewGuid().ToString();
@@ -47,7 +48,7 @@ namespace Core.Utilities.Helper
                 return new ErrorResult(typeValid.Message);
             }
 
-            DeleteOldImageFile((_currentDirectory + carImage).Replace("/", "\\"));
+            DeleteOldImageFile((_currentDirectory + carImage));
             CheckDirectoryExists(_currentDirectory + _folderName);
             CreateImageFile(_currentDirectory + _folderName + randomName + type, file);
 
@@ -72,9 +73,9 @@ namespace Core.Utilities.Helper
 
         private static void DeleteOldImageFile(string directory)
         {
-            if (File.Exists(directory.Replace("/", "\\")))
+            if (File.Exists(directory))
             {
-                File.Delete(directory.Replace("/", "\\"));
+                File.Delete(directory);
             }
 
         }

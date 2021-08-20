@@ -22,5 +22,6 @@ namespace Business.Constans
         public static string Update = "Güncellendi";
         public static string Imagefull="Resim En Fazla 5 Adet Olabilir";
         public static string ImageNotFound="Arabaya Ait Resim Bulunamadı";
+        public static string NotFound="Öğe Bulunamadı";
     }
 }
