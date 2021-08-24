@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -23,5 +24,11 @@ namespace Business.Constans
         public static string Imagefull="Resim En Fazla 5 Adet Olabilir";
         public static string ImageNotFound="Arabaya Ait Resim Bulunamadı";
         public static string NotFound="Öğe Bulunamadı";
+        public static string UserNotFound="Kullanıcı Bulunamadı";
+        public static string UserRegistered="Kullanıcı Kaydedildi";
+        public static string PasswordError="Parola Hatası";
+        public static string SuccessfulLogin="Giriş Yapıldı";
+        public static string UserAlreadyExists="Kullanıcı Bulunamadı";
+        public static string AccessTokenCreated="Token";
     }
 }

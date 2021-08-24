@@ -48,44 +48,51 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("update")]
-        public IActionResult Update([FromForm(Name = ("Image"))] FormFile file,[FromForm(Name ="Id")] int Id)
+        public IActionResult Update([FromForm(Name = ("Image"))] IFormFile file, [FromForm(Name = "Id")] int Id)
         {
-            var carImage = _carImageService.Get(Id).Data;
-            var result = _carImageService.Update(file,carImage);
-
-            if (result.Success)
+            try
             {
-                return Ok(result);
+                var carImage = _carImageService.Get(Id).Data;
+                var result = _carImageService.Update(file, carImage);
+
+                if (result.Success)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
             }
-            return BadRequest(result);
-        }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+            }
+            }
         [HttpPost("getall")]
-        public IActionResult Get()
-        {
-            var result = _carImageService.GetAll();
-            
-
-            if (result.Success)
+            public IActionResult Get()
             {
-                return Ok(result);
+                var result = _carImageService.GetAll();
+
+
+                if (result.Success)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
             }
-            return BadRequest(result);
-        }
-        [HttpPost("getbyıd")]
-        public IActionResult GetById([FromForm(Name = "Id")] int Id)
-        {
-            var result = _carImageService.GetById(Id);
-
-
-            if (result.Success)
+            [HttpPost("getbyıd")]
+            public IActionResult GetById([FromForm(Name = "Id")] int Id)
             {
-                return Ok(result);
+                var result = _carImageService.GetById(Id);
+
+
+                if (result.Success)
+                {
+                    return Ok(result);
+                }
+                return BadRequest(result);
             }
-            return BadRequest(result);
+
         }
 
     }
-
-}
 
 

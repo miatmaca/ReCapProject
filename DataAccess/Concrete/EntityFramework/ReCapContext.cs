@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Entity;
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 namespace DataAccess.Concrete.EntityFramework
 {
     //Context :Db tabloları ile proje tablolarını bağlamak.
-   public class ReCapContext:DbContext
+    public class ReCapContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,16 +23,16 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
-
-
-
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // modelBuilder.Entity<Brand>().ToTable("Brands");
             modelBuilder.Entity<Customer>()
            .HasKey(p => p.UserId);
             modelBuilder.Entity<Color>().Property(p => p.ColorId).HasColumnName("ColorsId");
-          //  modelBuilder.Entity<Brand>().Property(p => p.BrandName).HasColumnName("Name");
+            //  modelBuilder.Entity<Brand>().Property(p => p.BrandName).HasColumnName("Name");
         }
     }
 }

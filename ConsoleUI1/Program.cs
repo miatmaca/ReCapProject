@@ -32,12 +32,12 @@ namespace ConsoleUI
             //   Console.ReadLine();
             //}
 
-            User user = new User();
-            user.Id =2;
+            //User user = new User();
+            //user.Id =2;
             
-            user.LastName = "ATMACA";
-            user.Email = "mismetatmaca@gmail.com";
-            user.Password = "123456";
+            //user.LastName = "ATMACA";
+            //user.Email = "mismetatmaca@gmail.com";
+            //user.Password = "123456";
 
             //User user1 = new User();
             //user1.Id = 2;
@@ -47,8 +47,8 @@ namespace ConsoleUI
             //user1.Password = "987654"; 
 
 
-             UserManager userManager = new UserManager(new EfUserDal());
-             userManager.Add(user);
+             //UserManager userManager = new UserManager(new EfUserDal());
+             //userManager.Add(user);
             // userManager.Add(user1);
 
 
