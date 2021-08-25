@@ -1,5 +1,8 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.Dependency_Resolvers;
+using Core.Extension;
+using Core.IoC;
 using Core.Utilities.Security.Encyption;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
@@ -27,7 +30,7 @@ namespace WebAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            
+
         }
 
         public IConfiguration Configuration { get; }
@@ -36,12 +39,9 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowOrigin",
-                    builder => builder.WithOrigins("http://localhost:3000"));
-            });
 
+          
+          
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -58,7 +58,10 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-
+            services.AddDependencyResolvers(new ICoreModule[] { 
+            new CoreModule()
+            });
+            
             services.AddControllers();
         }
 
@@ -75,6 +78,9 @@ namespace WebAPI
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
+
+
 
             app.UseEndpoints(endpoints =>
             {

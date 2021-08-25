@@ -1,6 +1,7 @@
 ﻿using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constans
@@ -28,7 +29,8 @@ namespace Business.Constans
         public static string UserRegistered="Kullanıcı Kaydedildi";
         public static string PasswordError="Parola Hatası";
         public static string SuccessfulLogin="Giriş Yapıldı";
-        public static string UserAlreadyExists="Kullanıcı Bulunamadı";
+        public static string UserAlreadyExists="Kayıtlı Kullanıcı";
         public static string AccessTokenCreated="Token";
+        public static string AuthorizationDenied="Yetkiniz Yok";
     }
 }
