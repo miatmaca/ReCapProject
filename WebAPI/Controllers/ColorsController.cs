@@ -52,7 +52,7 @@ namespace WebAPI.Controllers
 
         }
         [HttpGet("getbybrand")]
-        public IActionResult GetByBrand(int id)
+        public IActionResult GetByBrand(int id)//Kontrol et true durumunda - hata mesajı veriyor
         {
             var result = _colorService.GetColorId(id);
             if (result.Success)

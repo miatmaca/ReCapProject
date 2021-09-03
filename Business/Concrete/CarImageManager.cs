@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Business.BusinessAsbect;
 using Business.Constans;
+using Core.Asbect.Autofac.Caching;
 using Core.Utilities;
 using Core.Utilities.Business;
 using Core.Utilities.Helper;
@@ -22,6 +24,9 @@ namespace Business.Concrete
             _carImageDal = carImage;
 
         }
+
+        [SecuredOperation("admin")]
+        [CacheAspect]
         public IResult Add(IFormFile file, CarImage carImage)
         {
 
@@ -44,6 +49,7 @@ namespace Business.Concrete
 
         }
 
+        [CacheRemoveAspect("ICarImageService")]
         public IResult Delete(CarImage carImage)
         {
             var result = _carImageDal.Get(c => c.CarId == carImage.CarId);
@@ -57,6 +63,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
+        [CacheAspect]
         public IDataResult<CarImage> Get(int Id)
         {
             return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.CarId == Id));

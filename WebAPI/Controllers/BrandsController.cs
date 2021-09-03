@@ -11,11 +11,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandsContoller : ControllerBase
+    public class BrandsController : ControllerBase
     {
         IBrandService _brandService;
 
-        public BrandsContoller(IBrandService brandService)
+        public BrandsController(IBrandService brandService)
         {
             _brandService = brandService;
         }
@@ -72,5 +72,6 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        
     }
 }
