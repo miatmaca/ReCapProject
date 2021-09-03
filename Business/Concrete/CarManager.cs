@@ -70,6 +70,8 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal1.GetAll(),Messages.Listed);
         }
+        
+
         [CacheAspect]
         public IDataResult<List<CarDetailsDto>> GetCarDetails()
         {
@@ -77,5 +79,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailsDto>>(_carDal1.GetCarDetails(), Messages.Listed);
 
         }
+
+
     }
 }
