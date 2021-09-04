@@ -31,9 +31,26 @@ namespace Business.Concrete
             //}
         }
 
+        public IResult Delete(Rental rental)
+        {
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Messages.Deleted);
+        }
+
+        public IDataResult<List<Rental>> GetAll()
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+        }
+
         public IDataResult<List<RentalDto>> GetRentalDetails()
         {
             return new SuccessDataResult<List<RentalDto>>(_rentalDal.GetRentalDetails());
+        }
+
+        public IResult Update(Rental rental)
+        {
+            _rentalDal.Update(rental);
+            return new SuccessResult(Messages.Update);
         }
     }
     }
