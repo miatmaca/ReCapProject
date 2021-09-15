@@ -65,34 +65,33 @@ namespace WebAPI.Controllers
             {
                 return BadRequest(e);
             }
-            }
-        [HttpPost("getall")]
-            public IActionResult Get()
-            {
-                var result = _carImageService.GetAll();
-
-
-                if (result.Success)
-                {
-                    return Ok(result);
-                }
-                return BadRequest(result);
-            }
-            [HttpPost("getbyıd")]
-            public IActionResult GetById([FromForm(Name = "Id")] int Id)
-            {
-                var result = _carImageService.GetById(Id);
-
-
-                if (result.Success)
-                {
-                    return Ok(result);
-                }
-                return BadRequest(result);
-            }
-
         }
+        [HttpGet("getall")]
+        public IActionResult Get()
+        {
+            var result = _carImageService.GetAll();
 
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getımagesbyıd")]
+        public IActionResult GetById([FromForm(Name = "Id")] int Id)
+        {
+            var result = _carImageService.GetById(Id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+       
+      
     }
+
+}
 
 

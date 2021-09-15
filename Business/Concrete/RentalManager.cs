@@ -20,15 +20,17 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            //if (rental.ReturnDate != null)
-            //{
+            Rental result = this.GetByCarId(rental.CarId).Data;
+            if (result != null && result.ReturnDate != null)
+            {
+                return new ErrorResult(Messages.CarRented);
+            }
+            else
+            {
                 _rentalDal.Add(rental);
-                return new SuccessResult(Messages.Added);
-            //}
-            //else
-            //{
-            //    return new ErrorResult(Messages.ErrorMessage);
-            //}
+                return new SuccessResult(Messages.CarAdded);
+
+            }
         }
 
         public IResult Delete(Rental rental)
@@ -42,6 +44,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
+        public IDataResult<Rental> GetByCarId(int id)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.Get(c => c.CarId == id), Messages.Listed);
+        }
+
         public IDataResult<List<RentalDto>> GetRentalDetails()
         {
             return new SuccessDataResult<List<RentalDto>>(_rentalDal.GetRentalDetails());
@@ -52,6 +59,20 @@ namespace Business.Concrete
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.Update);
         }
+        public IDataResult<List<Rental>> getDate(DateTime date ,int carId)
+        {
+           var result = _rentalDal.GetAll(c => c.RentDate == date && c.CarId == carId);
+            if (result.Count > 0)
+            {
+                return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(c => c.RentDate == date && c.CarId == carId), Messages.Listed);
+            }
+            else
+            {
+                return new ErrorDataResult<List<Rental>>(Messages.ErrorMessage);
+
+            }
+        
+        }
     }
-    }
+}
 

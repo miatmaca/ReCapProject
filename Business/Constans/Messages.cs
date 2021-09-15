@@ -32,5 +32,18 @@ namespace Business.Constans
         public static string UserAlreadyExists="Kayıtlı Kullanıcı";
         public static string AccessTokenCreated="Token";
         public static string AuthorizationDenied="Yetkiniz Yok";
+        public static string CarRented="Araba Kiralada";
+
+        public static string PaymentAdded = "Payment Eklendi";
+        public static string PaymentDelete = "Payment Silindi";
+        public static string PaymentUpdate = "Payment Güncellendi";
+
+        public static string CreditCardAdded="Kredi Kartı Eklendi";
+        public static string CreditCardDelete = "Kredi Kartı Silindi";
+        public static string CreditCardUpdate = "Kredi Kartı Güncellendi";
+        public static string NoEmptyCreditCard = "Geçerli Kredi Kartı Bulunamadı";
+        public static string InsBalance = "Yetersiz Bakiye";
+        public static string Succes = "Ödeme Gerçekleştirildi";
+
     }
 }

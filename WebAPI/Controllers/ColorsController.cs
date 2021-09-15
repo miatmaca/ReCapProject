@@ -51,10 +51,12 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
-        [HttpGet("getbybrand")]
-        public IActionResult GetByBrand(int id)//Kontrol et true durumunda - hata mesajı veriyor
+        [HttpGet("getbycolorid")]
+        public IActionResult GetByColor(int colorId)//Kontrol et true durumunda - hata mesajı veriyor
         {
-            var result = _colorService.GetColorId(id);
+            var result = _colorService.GetByColorId(colorId);
+           
+            
             if (result.Success)
             {
                 return Ok(result);

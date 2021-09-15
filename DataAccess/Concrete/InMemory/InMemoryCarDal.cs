@@ -15,12 +15,7 @@ namespace DataAccess.Concrete.InMemory
        
         public InMemoryCarDal()
         {
-            _cars = new List<Car> { 
-            new Car {BrandId=1,DailyPrice=200,ColorId=120,Description="Suv",Id=1,ModelYear=1995 },
-            new Car {BrandId=2,DailyPrice=100,ColorId=234,Description="Jeep",Id=2,ModelYear=2008 },
-            new Car {BrandId=3,DailyPrice=300,ColorId=345,Description="Otomobil",Id=3,ModelYear=2004 },
-            new Car {BrandId=4,DailyPrice=500,ColorId=129,Description="Kamyonet",Id=4,ModelYear=2021 }
-            };
+           
 
             
 
@@ -54,6 +49,11 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
+        public List<CarDetailsDto> GetBrandDetails(int brandId, int ColorId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetById(int categoryId)
         {
             return _cars.Where(c=>c.BrandId==categoryId).ToList();
@@ -66,13 +66,23 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
+        public List<CarDetailsDto> GetCarDetails(Expression<Func<CarDetailsDto, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailsDto> GetChange(int brandId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car car)
         {
             Car carToUpDate = _cars.SingleOrDefault(c => c.BrandId == car.BrandId);
             carToUpDate.ColorId = car.ColorId;
             carToUpDate.DailyPrice = car.DailyPrice;
             carToUpDate.Description = car.Description;
-            carToUpDate.Id = car.Id;
+            carToUpDate.CarId = car.CarId;
             carToUpDate.ModelYear = car.ModelYear;
 
         }

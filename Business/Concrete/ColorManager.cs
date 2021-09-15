@@ -3,6 +3,7 @@ using Business.Constans;
 using Core.Utilities;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +29,10 @@ namespace Business.Concrete
         {
            _colorDal.Delete(color);
             return new SuccessResult(Messages.ColorDelete);
+        }
+        public IDataResult<List<CarDetailsDto>> GetByColorId(int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailsDto>>(_colorDal.GetCarDetails(c => c.ColorId == colorId), Messages.Listed);
         }
 
         public IDataResult<List<Color>> GetAll()

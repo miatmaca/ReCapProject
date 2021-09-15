@@ -8,10 +8,8 @@ using static Core.DataAcces.IEntityRepository;
 
 namespace DataAccess.Abstract
 {
-  public interface ICarDal: IEntityRepository<Car>
+  public interface IPaymentDal:IEntityRepository<Payment>
     {
-      //  List<CarDetailsDto> GetCarDetails();
-        List<CarDetailsDto> GetCarDetails(Expression<Func<CarDetailsDto, bool>> filter = null);
-
+        List<RentalDto> GetPaymentDetails(Expression<Func<RentalDto, bool>> filter = null);
     }
 }

@@ -25,12 +25,16 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<CarImage> CarImages { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
-       
+
+        public DbSet<CreditCard> CreditCards { get; set; }
+        public DbSet<Payment> Payments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // modelBuilder.Entity<Brand>().ToTable("Brands");
             modelBuilder.Entity<Customer>()
            .HasKey(p => p.UserId);
+            modelBuilder.Entity<CreditCard>()
+          .HasKey(p => p.CreditCartId);
             modelBuilder.Entity<Color>().Property(p => p.ColorId).HasColumnName("ColorsId");
             //  modelBuilder.Entity<Brand>().Property(p => p.BrandName).HasColumnName("Name");
         }

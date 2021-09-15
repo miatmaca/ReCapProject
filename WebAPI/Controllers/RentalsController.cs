@@ -51,6 +51,15 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
+        [HttpGet("getdate")]
+        public IActionResult GetDate(DateTime date,int carId)
+        {
+            var result = _rentalService.getDate(date,  carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }
