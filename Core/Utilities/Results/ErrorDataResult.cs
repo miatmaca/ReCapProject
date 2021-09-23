@@ -10,10 +10,10 @@ namespace Core.Utilities
         {
 
         }
-        public ErrorDataResult(T data) : base(data, true)
+        public ErrorDataResult(T data) : base(data, false)
         {
         }
-        public ErrorDataResult(string message) : base(default, true,message)
+        public ErrorDataResult(string message) : base(default, false,message)
         {
         }
     }

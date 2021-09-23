@@ -5,12 +5,13 @@ using System.Text;
 
 namespace Core.CrossCuttingConcerns.Validation
 {
-    public class ValidationTool
+    public static class ValidationTool
     {
         public static void Validate(IValidator validator, object entity)
         {
-            var context = new ValidationContext<object>(entity);            
-            var result = validator.Validate(context);
+            var context = new ValidationContext<object>(entity);     
+            
+            var result = validator.Validate(context);//Valid edilen yer
             if (!result.IsValid)//geçerli değilse 
             {
                 throw new ValidationException(result.Errors);//hata fırlat

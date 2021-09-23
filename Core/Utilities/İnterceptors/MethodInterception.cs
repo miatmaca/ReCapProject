@@ -14,7 +14,8 @@ namespace Core.Utilities.İnterceptors
         public override void Intercept(IInvocation invocation)
         {
             var isSuccess = true;
-            OnBefore(invocation);
+            OnBefore(invocation);//Method çalıştırmak isterken invocation=method nerede çalıştırmak istersin
+                                   //OnBefore Method başında çalıştır.
             try
             {
                 invocation.Proceed();
@@ -27,7 +28,7 @@ namespace Core.Utilities.İnterceptors
             }
             finally
             {
-                if (isSuccess)
+                if (isSuccess)//Method başarılı olursa 
                 {
                     OnSuccess(invocation);
                 }

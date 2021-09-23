@@ -28,9 +28,9 @@ namespace Business.Constans
         public static string UserNotFound="Kullanıcı Bulunamadı";
         public static string UserRegistered="Kullanıcı Kaydedildi";
         public static string PasswordError="Parola Hatası";
-        public static string SuccessfulLogin="Giriş Yapıldı";
+        public static string SuccessfulLogin="Kayıt Yapıldı";
         public static string UserAlreadyExists="Kayıtlı Kullanıcı";
-        public static string AccessTokenCreated="Token";
+        public static string AccessTokenCreated="Giriş Yapıldı";
         public static string AuthorizationDenied="Yetkiniz Yok";
         public static string CarRented="Araba Kiralada";
 

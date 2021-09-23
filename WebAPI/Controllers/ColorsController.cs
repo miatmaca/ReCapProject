@@ -19,6 +19,8 @@ namespace WebAPI.Controllers
         {
             _colorService = colorService;
         }
+
+        [HttpPost("add")]
         public IActionResult Add(Color color)
         {
             var result = _colorService.Add(color);
@@ -54,7 +56,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbycolorid")]
         public IActionResult GetByColor(int colorId)//Kontrol et true durumunda - hata mesajı veriyor
         {
-            var result = _colorService.GetByColorId(colorId);
+            var result = _colorService.GetColorId(colorId);
            
             
             if (result.Success)

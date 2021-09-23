@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Business.BusinessAsbect;
 using Business.Constans;
+using Core.Asbect.Autofac.Caching;
 using Core.Utilities;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -18,12 +20,14 @@ namespace Business.Concrete
             _creditcardService = creditcardService;
         }
 
+        //[SecuredOperation("admin")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(CreditCard creditcard)
         {
             _creditcardService.Add(creditcard);
             return new SuccessResult(Messages.CreditCardAdded);
         }
-
+        [CacheAspect]
         public IDataResult<List<CreditCard>> CreditControl(int amount ,string cardNumber,int ExpMonth,int ExpYear,int CVV,string CardType,string fullname)
         {
             var result = new SuccessDataResult<List<CreditCard>>(_creditcardService.GetAll(
@@ -31,24 +35,27 @@ namespace Business.Concrete
             return CartControl(amount, result);
         }
 
-       
 
+       // [SecuredOperation("admin")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Delete(CreditCard creditcard)
         {
             _creditcardService.Delete(creditcard);
             return new SuccessResult(Messages.CreditCardDelete);
         }
-
+      //  [SecuredOperation("admin")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IDataResult<List<CreditCard>> GetAll()
         {
             return new SuccessDataResult<List<CreditCard>>(_creditcardService.GetAll());
         }
-
+        [CacheAspect]
         public IDataResult<List<CreditCard>> GetPaymentId(int creditcardId)
         {
             return new SuccessDataResult<List<CreditCard>>(_creditcardService.GetAll(p => p.CreditCartId == creditcardId));
         }
-
+       // [SecuredOperation("admin")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(CreditCard creditcard)
         {
             _creditcardService.Update(creditcard);

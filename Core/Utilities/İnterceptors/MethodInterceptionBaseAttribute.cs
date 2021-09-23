@@ -12,7 +12,8 @@ namespace Core.Utilities.İnterceptors
 
         public virtual void Intercept(IInvocation invocation)
         {
-
+            //Methodların üzerine veya class lara Attribute ekleyebilirsin birden
+            //fazla kullanabilirsin.
         }
     }
 }
