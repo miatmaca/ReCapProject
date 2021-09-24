@@ -45,5 +45,9 @@ namespace Business.Constans
         public static string InsBalance = "Yetersiz Bakiye";
         public static string Succes = "Ödeme Gerçekleştirildi";
 
+        public static string useroperationclaimAdded = "Operasyon Eklendi";
+        public static string useroperationclaimDelete = "Operasyon Silindi";
+        public static string useroperationclaimUpdate= "Operasyon Güncellendi";
+        public static string useroperationclaimListed= "Operasyon Listelendi";
     }
 }

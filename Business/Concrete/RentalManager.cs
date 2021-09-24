@@ -19,8 +19,8 @@ namespace Business.Concrete
         {
             _rentalDal = rentalDal;
         }
-       // [SecuredOperation("admin")]
-        [CacheRemoveAspect("IRentalService.Get")]
+        [SecuredOperation("admin")]
+       // [CacheRemoveAspect("IRentalService.Get")]
         public IResult Add(Rental rental)
         {         
                          

@@ -24,6 +24,17 @@ namespace DataAccess.Concrete.EntityFramework
 
             }
         }
-
+        public List<OperationClaim> GetUserClaimById(int userId)
+        {
+            using (var context = new ReCapContext())
+            {
+                var result = from oC in context.OperationClaims
+                             join uC in context.UserOperationClaims
+                                 on oC.Id equals uC.OperationClaimsId
+                             where uC.UserId == userId
+                             select new OperationClaim { Id = oC.Id, Name = oC.Name };
+                return result.ToList();
+            }
+        }
     }
 }

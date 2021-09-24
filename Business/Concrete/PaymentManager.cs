@@ -21,7 +21,7 @@ namespace Business.Concrete
         {
             _paymentService = paymentService;
         }
-       // [SecuredOperation("admin")]
+        [SecuredOperation("admin")]
         [CacheRemoveAspect("IPaymentService.Get")]
         public IResult Add(Payment payment)
         {

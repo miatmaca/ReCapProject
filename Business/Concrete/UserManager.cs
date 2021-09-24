@@ -51,10 +51,7 @@ namespace Business.Concrete
             return _userDal.Get(c => c.Email == mail);
         }
         [CacheAspect]
-        public List<OperationClaim> GetClaims(User user)
-        {
-            return _userDal.GetClaims(user);
-        }
+      
         [CacheAspect]
         public IDataResult<List<User>> GetUserId(int id)
         {
@@ -80,5 +77,17 @@ namespace Business.Concrete
             _userDal.Update(result);
             return new SuccessResult(Messages.Update);
         }
+
+        public IDataResult<List<OperationClaim>> GetClaimUserById(int userId)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetUserClaimById(userId));
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
+
+       
     }
 }
