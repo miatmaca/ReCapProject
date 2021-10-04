@@ -93,7 +93,26 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
+        [HttpGet("getalluserclaim")]
+        public IActionResult GetAllUserClaim()
+        {
+            var result = _userservice.GetAllUserClaim();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getalluserclaimdto")]
+        public IActionResult GetAllUserClaimDto()
+        {
+            var result = _userservice.GetAllUserClaimDto();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
     }
 }

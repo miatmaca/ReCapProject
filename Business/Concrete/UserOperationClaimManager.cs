@@ -30,14 +30,20 @@ namespace Business.Concrete
 
         public IDataResult<List<UserOperationClaim>> GetAll()
         {
-            return new SuccessDataResult<List<UserOperationClaim>>(_userOperationClaimDal.GetAll()); 
+            return new SuccessDataResult<List<UserOperationClaim>>(_userOperationClaimDal.GetAll());
         }
-
-      
-
+        public IDataResult<UserOperationClaim> GetClaimByUserId(int userId)
+        {
+            return new SuccessDataResult<UserOperationClaim>(_userOperationClaimDal.Get(p => p.UserId == userId));
+        }
         public IResult Update(UserOperationClaim userOperationClaim)
         {
-            _userOperationClaimDal.Update(userOperationClaim);
+            var claim = GetClaimByUserId(userOperationClaim.UserId).Data;
+            claim.UserId = userOperationClaim.UserId;
+            claim.OperationClaimsId = userOperationClaim.OperationClaimsId;
+            claim.Id = userOperationClaim.Id;
+
+            _userOperationClaimDal.Update(claim);
             return new SuccessResult(Messages.useroperationclaimUpdate);
         }
     }

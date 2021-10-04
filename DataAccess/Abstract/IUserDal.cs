@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Entity;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,5 +12,7 @@ namespace DataAccess.Abstract
     {
         List<OperationClaim> GetClaims(User user);
         List<OperationClaim> GetUserClaimById(int userId);
+        List<OperationClaim> GetAllUserClaim();
+        List<UserClaimDto> GetAllUsersDetail();
     }
 }

@@ -25,8 +25,8 @@ namespace Business.Concrete
 
         }
 
-        [SecuredOperation("admin")]
-        [CacheAspect]
+        //  [SecuredOperation("admin")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(IFormFile file, CarImage carImage)
         {
 
@@ -111,7 +111,7 @@ namespace Business.Concrete
         private IResult ImageFull(CarImage carImage)
         {
             var result = _carImageDal.GetAll(c => c.CarId == carImage.CarId).Count;
-            if (result > 5)
+            if (result >= 1)
             {
                 return new ErrorResult(Messages.Imagefull);
             }

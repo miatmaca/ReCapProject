@@ -27,9 +27,9 @@ namespace Business.Concrete
 
         }
 
-        // [SecuredOperation("admin")]
+         [SecuredOperation("admin")]
          [ValidationAspect(typeof(CarValidator))]//Add metodu doğrula .CarValidator deki kurallara göre
-        // [CacheRemoveAspect("ICarService.Get")]
+         [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             // ValidationTool.Validate(new CarValidator(), car);
@@ -41,7 +41,7 @@ namespace Business.Concrete
         }
 
         [CacheRemoveAspect("ICarService.Get")]
-      //  [SecuredOperation("admin")]
+        [SecuredOperation("admin")]
         public IResult Delete(Car car)
         {
             _carDal1.Delete(car);
@@ -49,7 +49,7 @@ namespace Business.Concrete
         }
 
         //  [SecuredOperation("admin")]
-        //[CacheRemoveAspect("ICarService.Get")]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _carDal1.Update(car);

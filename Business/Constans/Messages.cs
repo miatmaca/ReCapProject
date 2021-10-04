@@ -22,7 +22,7 @@ namespace Business.Constans
         public static string Added = "Eklendi";
         public static string Deleted = "Silindi";
         public static string Update = "Güncellendi";
-        public static string Imagefull="Resim En Fazla 5 Adet Olabilir";
+        public static string Imagefull="Resim En Fazla 1 Adet Olabilir";
         public static string ImageNotFound="Arabaya Ait Resim Bulunamadı";
         public static string NotFound="Öğe Bulunamadı";
         public static string UserNotFound="Kullanıcı Bulunamadı";

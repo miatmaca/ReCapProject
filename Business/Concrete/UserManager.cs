@@ -22,22 +22,22 @@ namespace Business.Concrete
             _userDal = user;
         }
         //[CacheRemoveAspect("IUserService.Get")]
-       // [SecuredOperation("admin")]        
+        // [SecuredOperation("admin")]        
         public IResult Add(User user)
         {
             _userDal.Add(user);
             return new SuccessResult(Messages.Added);
         }
-       // [CacheRemoveAspect("IUserService.Get")]
+        // [CacheRemoveAspect("IUserService.Get")]
         [SecuredOperation("admin")]
         public IResult Delete(User user)
         {
             _userDal.Delete(user);
             return new SuccessResult(Messages.Deleted);
         }
-          public IDataResult<List<User>> GetEmailById(string email)
+        public IDataResult<List<User>> GetEmailById(string email)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(p=>p.Email==email));
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(p => p.Email == email));
 
 
         }
@@ -51,21 +51,20 @@ namespace Business.Concrete
             return _userDal.Get(c => c.Email == mail);
         }
         [CacheAspect]
-      
-        [CacheAspect]
         public IDataResult<List<User>> GetUserId(int id)
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(u=>u.Id==id));
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(u => u.Id == id));
         }
-      //  [CacheRemoveAspect("IUserService.Get")]
-      //  [SecuredOperation("admin")]
+        //  [CacheRemoveAspect("IUserService.Get")]
+        //  [SecuredOperation("admin")]
         public IResult Update(UserForRegisterDto user)
         {
-            
+
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
             var result = new User
-            {   Id=user.Id,
+            {
+                Id = user.Id,
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
@@ -87,7 +86,14 @@ namespace Business.Concrete
         {
             return _userDal.GetClaims(user);
         }
+         public  IDataResult<List<OperationClaim>> GetAllUserClaim()
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetAllUserClaim());
+        }
 
-       
+        public IDataResult<List<UserClaimDto>> GetAllUserClaimDto()
+        {
+            return new SuccessDataResult<List<UserClaimDto>>(_userDal.GetAllUsersDetail());
+        }
     }
 }

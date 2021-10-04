@@ -35,7 +35,11 @@ namespace DataAccess.Concrete.EntityFramework
            .HasKey(p => p.UserId);
             modelBuilder.Entity<CreditCard>()
           .HasKey(p => p.CreditCartId);
-           // modelBuilder.Entity<Color>().Property(p => p.ColorId).HasColumnName("ColorsId");
+            modelBuilder.Entity<UserOperationClaim>()
+          .HasKey(p => p.Id);
+
+
+            // modelBuilder.Entity<Color>().Property(p => p.ColorId).HasColumnName("ColorsId");
             //  modelBuilder.Entity<Brand>().Property(p => p.BrandName).HasColumnName("Name");
         }
     }
